@@ -8,6 +8,7 @@ var correctIncorrect = document.querySelector("#correct-or-incorrect")
 var startButton = document.querySelector("#start-quiz-button")
 var quizSectionEl = document.querySelector(".quiz-section")
 var intro = document.querySelector(".intro-section")
+var answerChoices = document.querySelector("#list")
 
 // Question Sets
 var question1 = { 
@@ -78,31 +79,46 @@ function firstQuestion (){
     choice2.textContent=question1.choice2;
     choice3.textContent=question1.choice3;
     choice4.textContent=question1.choice4;
-    correctIncorrect.textContent= "__";
+    correctIncorrect.textContent= " ";
     // Indicate if the correct or incorrect answer is selected
-    choice1.addEventListener("click", wrongAnswer, secondQuestion);
-    choice2.addEventListener("click", wrongAnswer, secondQuestion);
-    choice4.addEventListener("click", wrongAnswer, secondQuestion);
-    choice3.addEventListener("click", correctAnswer, secondQuestion);
+    choice1.addEventListener("click", wrongAnswer);
+    choice2.addEventListener("click", wrongAnswer);
+    choice4.addEventListener("click", wrongAnswer);
+    choice3.addEventListener("click", correctAnswer);
+    answerChoices.addEventListener("click", secondQuestion);
 }
-
 function secondQuestion(){
     question.textContent=question2.question;
     choice1.textContent=question2.choice1;
     choice2.textContent=question2.choice2;
     choice3.textContent=question2.choice3;
     choice4.textContent=question2.choice4;
-    correctIncorrect.textContent= "__";
+    correctIncorrect.textContent= " ";
     // Indicate if the correct or incorrect answer is selected
-    choice1.addEventListener("click", correctAnswer2);
-    choice2.addEventListener("click", wrongAnswer2);
-    choice4.addEventListener("click", wrongAnswer2);
-    choice3.addEventListener("click", wrongAnswer2);
-    
+    choice1.addEventListener("click", correctAnswer);
+    choice2.addEventListener("click", wrongAnswer);
+    choice4.addEventListener("click", wrongAnswer);
+    choice3.addEventListener("click", wrongAnswer); 
+    answerChoices.addEventListener("click", thirdQuestion);
 }
+function thirdQuestion(){
+    question.textContent=question3.question;
+    choice1.textContent=question3.choice1;
+    choice2.textContent=question3.choice2;
+    choice3.textContent=question3.choice3;
+    choice4.textContent=question3.choice4;
+    correctIncorrect.textContent= " ";
+    // Indicate if the correct or incorrect answer is selected
+    choice1.addEventListener("click", correctAnswer);
+    choice2.addEventListener("click", wrongAnswer);
+    choice4.addEventListener("click", wrongAnswer);
+    choice3.addEventListener("click", wrongAnswer); 
+}
+
 // Wrong answer selected
 function wrongAnswer(){
     correctIncorrect.textContent = "Incorrect!";
+    console.log ("hi")
 }
 // Correct answer selected
 function correctAnswer(){
