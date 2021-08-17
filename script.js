@@ -1,9 +1,9 @@
 var timerEl = document.querySelector(".time");
 var question = document.querySelector("#question")
-var answer1 = document.querySelector("#choice1")
-var answer2 = document.querySelector("#choice2")
-var answer3 = document.querySelector("#choice3")
-var answer4 = document.querySelector("#choice4")
+var choice1 = document.querySelector("#choice1")
+var choice2 = document.querySelector("#choice2")
+var choice3 = document.querySelector("#choice3")
+var choice4 = document.querySelector("#choice4")
 var startButton = document.querySelector("#start-quiz-button")
 var quizSectionEl = document.querySelector(".quiz-section")
 
@@ -34,6 +34,8 @@ var question3 = {
     rightAnswer: "animal"
 }
 
+questionsArray = [question1, question2, question3]
+
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
 // THEN the first question with answer choices appears 
@@ -50,19 +52,27 @@ function startQuiz(){
             displayMessage();
         }
     }, 1000);
+    newQuestion ();
 }
+// Display message when time runs out - "You lose"
+// function displayMessage();
+
 
 // Makes the quiz section appear
 startButton.addEventListener("click", startQuiz);
 
 function newQuestion (){
-    
-
+    question.textContent=question1.question;
+    choice1.textContent=question1.choice1;
+    choice2.textContent=question1.choice2;
+    choice3.textContent=question1.choice3;
+    choice4.textContent=question1.choice4;
 }
 
+var questionBank = questionsArray[Math.floor(Math.random() * questionsArray.length)];
 
 
-questionList = [question1, question2, question3]
+
 
 
 

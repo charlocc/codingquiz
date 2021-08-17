@@ -10,19 +10,30 @@ header{
     background-color: lavender;
     color: rgb(70, 0, 70);
     border: rgb(70, 0, 70) solid 2px;
-    border-radius: 2%;
+    border-radius: 10px;
     width: 97.5%;
     top: 0;
 }
 
+#start-quiz-button{
+    align-items: center;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+#start-quiz-button:hover {
+    border: 3px solid;
+    box-shadow: 0 0 10px rgb(70, 0, 70) inset;
+}
+
 /* Quiz Section */
 .quiz-section{
-    display: none;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     padding: 1%;
     background-color: lavender;
+    display: none;
 
 }
 
