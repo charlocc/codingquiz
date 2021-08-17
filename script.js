@@ -10,11 +10,12 @@ var quizSectionEl = document.querySelector(".quiz-section")
 var intro = document.querySelector(".intro-section")
 var answerChoices = document.querySelector("#list")
 var scoreCount = document.querySelector("#score")
+var finalMessage = document.getElementById("final-message")
+var timeLeft= 60;
 
-scoreCount = 0;
 // Question Sets
 var question1 = { 
-    question:"what is a letter",
+    question:"what is a letter?",
     choice1: "4",
     choice2: "7",
     choice3: "c",
@@ -38,9 +39,9 @@ var question3 = {
 
 var question4 = { 
     question:"what is small?",
-    choice1: "elephant",
+    choice1: "mouse",
     choice2: "rhino",
-    choice3: "mouse",
+    choice3: "elephant",
     choice4: "planet",
 }
 
@@ -54,24 +55,34 @@ var question5 = {
 
 timerEl.textContent="____________";
 
+
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
 // THEN the first question with answer choices appears 
     intro.style.display = "none";
     quizSectionEl.style.display = "block";
     // And the timer begins counting down
-    var timeLeft= 120;
     var timeInterval = setInterval(function() {
         timerEl.textContent=timeLeft + " seconds left";
         timeLeft--;
 
-        if(timeLeft ===0) {
+        if(timeLeft <=0) {
             clearInterval(timeInterval);
             timerEl.textContent = " ";
             displayMessage();
         }
     }, 1000);
     firstQuestion();
+}
+
+// Wrong answer selected
+function wrongAnswer(){
+    correctIncorrect.textContent= "Incorrect!";
+    timeLeft=timeLeft-10;
+}
+// Correct answer selected
+function correctAnswer(){
+    correctIncorrect.textContent= "Correct!";
 }
 
 // Makes the quiz section appear
@@ -86,21 +97,6 @@ function displayMessage() {
 
 }
 
-// Wrong answer selected
-function wrongAnswer(){
-    correctIncorrect.textContent= "Incorrect!";
-    console.log ("Incorrect!")
-    
-    var loss = scoreCount--;
-    scoreCount.textContent= loss;
-}
-// Correct answer selected
-function correctAnswer(){
-    correctIncorrect.textContent= "Correct!";
-    console.log ("Correct!")
-    var win = scoreCount++;
-    scoreCount.textContent= win;
-}
 
 // Lists the question and answer choices
 function firstQuestion (){
@@ -150,9 +146,9 @@ function fourthQuestion(){
     choice3.textContent=question4.choice3;
     choice4.textContent=question4.choice4;
     // Indicate if the correct or incorrect answer is selected
-    choice1.addEventListener("click", wrongAnswer);
+    choice1.addEventListener("click", correctAnswer);
     choice2.addEventListener("click", wrongAnswer);
-    choice3.addEventListener("click", correctAnswer);
+    choice3.addEventListener("click", wrongAnswer);
     choice4.addEventListener("click", wrongAnswer);
     answerChoices.addEventListener("click", fifthQuestion);
 }
@@ -167,9 +163,16 @@ function fifthQuestion(){
     choice2.addEventListener("click", correctAnswer);
     choice3.addEventListener("click", wrongAnswer);
     choice4.addEventListener("click", wrongAnswer);
+    answerChoices.addEventListener("click", promptInitials); 
 }
-
-
+// THEN the user can input their initials (prompt)
+function promptInitials(){
+    var initials = prompt("Please enter your initials", "initials");
+        if (initials != null) {
+        finalMessage.innerHTML = initials + ", your final score is " + timeLeft;
+    }
+    timerEl.textContent="____________";
+}
 
 
 // questionsArray = [question1, question2, question3]
@@ -177,10 +180,6 @@ function fifthQuestion(){
 
 
 
-
-// WHEN the user answers a question 
-// THEN a "correct" or an "incorrect" alert appears
-// THEN the next question and answer choices appear
 
 // WHEN the user finishes the quiz,
 // THEN an alert appears with their score
