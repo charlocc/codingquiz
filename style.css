@@ -1,0 +1,54 @@
+:root{
+    color:black;
+}
+
+header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1%;
+    background-color: lavender;
+    color: rgb(70, 0, 70);
+    border: rgb(70, 0, 70) solid 2px;
+    border-radius: 2%;
+    width: 97.5%;
+    top: 0;
+}
+
+/* Quiz Section */
+.quiz-section{
+    display: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1%;
+    background-color: lavender;
+
+}
+
+#question{
+    color: rgb(70, 0, 70);
+
+} 
+
+
+#answer-choices{
+
+}
+/* 
+.highscoreinput{
+
+}
+
+.intro-section{
+
+}
+
+.time{
+
+} 
+
+#answerchoice{
+
+}
+ */
