@@ -9,7 +9,9 @@ var startButton = document.querySelector("#start-quiz-button")
 var quizSectionEl = document.querySelector(".quiz-section")
 var intro = document.querySelector(".intro-section")
 var answerChoices = document.querySelector("#list")
+var scoreCount = document.querySelector("#score")
 
+scoreCount = 0;
 // Question Sets
 var question1 = { 
     question:"what is a letter",
@@ -17,7 +19,6 @@ var question1 = {
     choice2: "7",
     choice3: "c",
     choice4: "6",
-    rightAnswer: "c"
 }
 var question2 = { 
     question:"what is a dog?",
@@ -25,7 +26,6 @@ var question2 = {
     choice2: "boat",
     choice3: "planet",
     choice4: "state",
-    rightAnswer: "animal"
 }
 
 var question3 = { 
@@ -34,7 +34,22 @@ var question3 = {
     choice2: "wood",
     choice3: "dirt",
     choice4: "sky",
-    rightAnswer: "animal"
+}
+
+var question4 = { 
+    question:"what is small?",
+    choice1: "elephant",
+    choice2: "rhino",
+    choice3: "mouse",
+    choice4: "planet",
+}
+
+var question5 = { 
+    question:"what is my name?",
+    choice1: "doug",
+    choice2: "charlotte",
+    choice3: "sarah",
+    choice4: "brad",
 }
 
 timerEl.textContent="____________";
@@ -71,6 +86,21 @@ function displayMessage() {
 
 }
 
+// Wrong answer selected
+function wrongAnswer(){
+    correctIncorrect.textContent= "Incorrect!";
+    console.log ("Incorrect!")
+    
+    var loss = scoreCount--;
+    scoreCount.textContent= loss;
+}
+// Correct answer selected
+function correctAnswer(){
+    correctIncorrect.textContent= "Correct!";
+    console.log ("Correct!")
+    var win = scoreCount++;
+    scoreCount.textContent= win;
+}
 
 // Lists the question and answer choices
 function firstQuestion (){
@@ -79,7 +109,7 @@ function firstQuestion (){
     choice2.textContent=question1.choice2;
     choice3.textContent=question1.choice3;
     choice4.textContent=question1.choice4;
-    correctIncorrect.textContent= " ";
+    correctIncorrect.textContent= "pick an answer";
     // Indicate if the correct or incorrect answer is selected
     choice1.addEventListener("click", wrongAnswer);
     choice2.addEventListener("click", wrongAnswer);
@@ -93,12 +123,11 @@ function secondQuestion(){
     choice2.textContent=question2.choice2;
     choice3.textContent=question2.choice3;
     choice4.textContent=question2.choice4;
-    correctIncorrect.textContent= " ";
     // Indicate if the correct or incorrect answer is selected
     choice1.addEventListener("click", correctAnswer);
     choice2.addEventListener("click", wrongAnswer);
-    choice4.addEventListener("click", wrongAnswer);
     choice3.addEventListener("click", wrongAnswer); 
+    choice4.addEventListener("click", wrongAnswer);
     answerChoices.addEventListener("click", thirdQuestion);
 }
 function thirdQuestion(){
@@ -107,23 +136,39 @@ function thirdQuestion(){
     choice2.textContent=question3.choice2;
     choice3.textContent=question3.choice3;
     choice4.textContent=question3.choice4;
-    correctIncorrect.textContent= " ";
     // Indicate if the correct or incorrect answer is selected
-    choice1.addEventListener("click", correctAnswer);
+    choice1.addEventListener("click", wrongAnswer);
     choice2.addEventListener("click", wrongAnswer);
+    choice3.addEventListener("click", wrongAnswer);
+    choice4.addEventListener("click", correctAnswer);
+    answerChoices.addEventListener("click", fourthQuestion);
+}
+function fourthQuestion(){
+    question.textContent=question4.question;
+    choice1.textContent=question4.choice1;
+    choice2.textContent=question4.choice2;
+    choice3.textContent=question4.choice3;
+    choice4.textContent=question4.choice4;
+    // Indicate if the correct or incorrect answer is selected
+    choice1.addEventListener("click", wrongAnswer);
+    choice2.addEventListener("click", wrongAnswer);
+    choice3.addEventListener("click", correctAnswer);
     choice4.addEventListener("click", wrongAnswer);
-    choice3.addEventListener("click", wrongAnswer); 
+    answerChoices.addEventListener("click", fifthQuestion);
+}
+function fifthQuestion(){
+    question.textContent=question5.question;
+    choice1.textContent=question5.choice1;
+    choice2.textContent=question5.choice2;
+    choice3.textContent=question5.choice3;
+    choice4.textContent=question5.choice4;
+    // Indicate if the correct or incorrect answer is selected
+    choice1.addEventListener("click", wrongAnswer);
+    choice2.addEventListener("click", correctAnswer);
+    choice3.addEventListener("click", wrongAnswer);
+    choice4.addEventListener("click", wrongAnswer);
 }
 
-// Wrong answer selected
-function wrongAnswer(){
-    correctIncorrect.textContent = "Incorrect!";
-    console.log ("hi")
-}
-// Correct answer selected
-function correctAnswer(){
-    correctIncorrect.textContent = "Correct!";
-}
 
 
 
