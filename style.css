@@ -15,6 +15,15 @@ header{
     top: 0;
 }
 
+li{
+    background-color: rgb(227, 211, 241);
+    color: rgb(70, 0, 70);
+    width: auto;
+    padding: 2%;
+    border-radius: 10px;
+    border:rgb(70, 0, 70) solid 2px;
+}
+
 #start-quiz-button{
     align-items: center;
     padding: 1%;
@@ -37,15 +46,18 @@ header{
 
 }
 
-#question{
+#question, #correct-or-incorrect{
     color: rgb(70, 0, 70);
-
+    margin: 2% 6%;
 } 
 
 
-#answer-choices{
+/* #answer-choices{
+    
 
-}
+} */
+
+
 /* 
 .highscoreinput{
 

@@ -4,8 +4,10 @@ var choice1 = document.querySelector("#choice1")
 var choice2 = document.querySelector("#choice2")
 var choice3 = document.querySelector("#choice3")
 var choice4 = document.querySelector("#choice4")
+var correctIncorrect = document.querySelector("#correct-or-incorrect")
 var startButton = document.querySelector("#start-quiz-button")
 var quizSectionEl = document.querySelector(".quiz-section")
+var intro = document.querySelector(".intro-section")
 
 // Question Sets
 var question1 = { 
@@ -39,9 +41,10 @@ questionsArray = [question1, question2, question3]
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
 // THEN the first question with answer choices appears 
+    intro.style.display = "none";
     quizSectionEl.style.display = "block";
     // And the timer begins counting down
-    var timeLeft= 10;
+    var timeLeft= 120;
     var timeInterval = setInterval(function() {
         timerEl.textContent=timeLeft + " seconds left";
         timeLeft--;
@@ -52,8 +55,11 @@ function startQuiz(){
             displayMessage();
         }
     }, 1000);
-    newQuestion ();
+    newQuestion();
 }
+
+// Makes the quiz section appear
+startButton.addEventListener("click", startQuiz);
 
 // Message after losing; Allows user to play again via confirm message
 function displayMessage() {
@@ -63,30 +69,32 @@ function displayMessage() {
     } 
 
 }
-// Display message when time runs out - "You lose"
-// function displayMessage();
 
 
-// Makes the quiz section appear
-startButton.addEventListener("click", startQuiz);
-
+// Lists the question and answer choices
 function newQuestion (){
     question.textContent=question1.question;
     choice1.textContent=question1.choice1;
     choice2.textContent=question1.choice2;
     choice3.textContent=question1.choice3;
     choice4.textContent=question1.choice4;
+    correctIncorrect.textContent= " hi ";
+    // Indicate if the correct or incorrect answer is selected
+    // choice1.addEventListener("click", wrongAnswer);
 }
+
+// Wrong answer selected
+function wrongAnswer(){
+    correctIncorrect.innerHTML = "Incorrect"
+    newQuestion();
+}
+
+
 
 var questionBank = questionsArray[Math.floor(Math.random() * questionsArray.length)];
 
 
 
-
-
-
-
-// THEN a timer appears
 
 // WHEN the user answers a question 
 // THEN a "correct" or an "incorrect" alert appears
