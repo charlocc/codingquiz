@@ -41,7 +41,7 @@ function startQuiz(){
 // THEN the first question with answer choices appears 
     quizSectionEl.style.display = "block";
     // And the timer begins counting down
-    var timeLeft= 120;
+    var timeLeft= 10;
     var timeInterval = setInterval(function() {
         timerEl.textContent=timeLeft + " seconds left";
         timeLeft--;
@@ -53,6 +53,15 @@ function startQuiz(){
         }
     }, 1000);
     newQuestion ();
+}
+
+// Message after losing; Allows user to play again via confirm message
+function displayMessage() {
+    quizSectionEl.style.display = "none";
+    if (confirm("Game Over! Would you like to try again?")){
+        startQuiz();
+    } 
+
 }
 // Display message when time runs out - "You lose"
 // function displayMessage();
