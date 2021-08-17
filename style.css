@@ -1,5 +1,6 @@
 :root{
     color:black;
+    font-family: sans-serif;
 }
 
 header{
@@ -18,13 +19,30 @@ header{
 li{
     background-color: rgb(227, 211, 241);
     color: rgb(70, 0, 70);
-    width: auto;
+    width: 90%;
     padding: 2%;
     border-radius: 10px;
     border:rgb(70, 0, 70) solid 2px;
 }
 
+/* Header */
+#highscores-link{
+    background-color: rgb(162, 214, 235);
+    border-radius: 10px;
+    border: rgb(70, 0, 70) solid 2px;
+    padding: 1%;
+    text-decoration: none;
+}
+
+#highscores-link:hover {
+    border: 3px solid;
+    box-shadow: 0 0 10px rgb(70, 0, 70) inset;
+}
+
 #start-quiz-button{
+    background-color: rgb(162, 214, 235);
+    color: rgb(70, 0, 70);
+    font-size: 15px;
     align-items: center;
     padding: 1%;
     border-radius: 10px;
@@ -33,6 +51,20 @@ li{
 #start-quiz-button:hover {
     border: 3px solid;
     box-shadow: 0 0 10px rgb(70, 0, 70) inset;
+}
+
+.time{
+    background-color: rgb(162, 214, 235);
+    color: rgb(70, 0, 70);
+    font-size: 15px;
+    align-items: center;
+    padding: 1%;
+    border-radius: 10px;
+    border: rgb(70, 0, 70) solid 2px;
+} 
+/* Intro */
+.intro-section{
+    
 }
 
 /* Quiz Section */
@@ -52,26 +84,13 @@ li{
 } 
 
 
-/* #answer-choices{
-    
-
-} */
+#answer-choices{
+    list-style-type: none;
+} 
 
 
 /* 
 .highscoreinput{
-
-}
-
-.intro-section{
-
-}
-
-.time{
-
-} 
-
-#answerchoice{
 
 }
  */

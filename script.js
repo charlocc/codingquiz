@@ -36,7 +36,7 @@ var question3 = {
     rightAnswer: "animal"
 }
 
-questionsArray = [question1, question2, question3]
+timerEl.textContent="____________";
 
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
@@ -55,7 +55,7 @@ function startQuiz(){
             displayMessage();
         }
     }, 1000);
-    newQuestion();
+    firstQuestion();
 }
 
 // Makes the quiz section appear
@@ -72,26 +72,47 @@ function displayMessage() {
 
 
 // Lists the question and answer choices
-function newQuestion (){
+function firstQuestion (){
     question.textContent=question1.question;
     choice1.textContent=question1.choice1;
     choice2.textContent=question1.choice2;
     choice3.textContent=question1.choice3;
     choice4.textContent=question1.choice4;
-    correctIncorrect.textContent= " hi ";
+    correctIncorrect.textContent= "__";
     // Indicate if the correct or incorrect answer is selected
-    // choice1.addEventListener("click", wrongAnswer);
+    choice1.addEventListener("click", wrongAnswer, secondQuestion);
+    choice2.addEventListener("click", wrongAnswer, secondQuestion);
+    choice4.addEventListener("click", wrongAnswer, secondQuestion);
+    choice3.addEventListener("click", correctAnswer, secondQuestion);
 }
 
+function secondQuestion(){
+    question.textContent=question2.question;
+    choice1.textContent=question2.choice1;
+    choice2.textContent=question2.choice2;
+    choice3.textContent=question2.choice3;
+    choice4.textContent=question2.choice4;
+    correctIncorrect.textContent= "__";
+    // Indicate if the correct or incorrect answer is selected
+    choice1.addEventListener("click", correctAnswer2);
+    choice2.addEventListener("click", wrongAnswer2);
+    choice4.addEventListener("click", wrongAnswer2);
+    choice3.addEventListener("click", wrongAnswer2);
+    
+}
 // Wrong answer selected
 function wrongAnswer(){
-    correctIncorrect.innerHTML = "Incorrect"
-    newQuestion();
+    correctIncorrect.textContent = "Incorrect!";
+}
+// Correct answer selected
+function correctAnswer(){
+    correctIncorrect.textContent = "Correct!";
 }
 
 
 
-var questionBank = questionsArray[Math.floor(Math.random() * questionsArray.length)];
+// questionsArray = [question1, question2, question3]
+// var questionBank = questionsArray[Math.floor(Math.random() * questionsArray.length)];
 
 
 
