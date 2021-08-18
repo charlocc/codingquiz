@@ -1,17 +1,19 @@
 var timerEl = document.querySelector(".time");
-var question = document.querySelector("#question")
-var choice1 = document.querySelector("#choice1")
-var choice2 = document.querySelector("#choice2")
-var choice3 = document.querySelector("#choice3")
-var choice4 = document.querySelector("#choice4")
-var correctIncorrect = document.querySelector("#correct-or-incorrect")
-var startButton = document.querySelector("#start-quiz-button")
-var quizSectionEl = document.querySelector(".quiz-section")
-var intro = document.querySelector(".intro-section")
-var answerChoices = document.querySelector("#list")
-var scoreCount = document.querySelector("#score")
-var finalMessage = document.getElementById("final-message")
+var question = document.querySelector("#question");
+var choice1 = document.querySelector("#choice1");
+var choice2 = document.querySelector("#choice2");
+var choice3 = document.querySelector("#choice3");
+var choice4 = document.querySelector("#choice4");
+var correctIncorrect = document.querySelector("#correct-or-incorrect");
+var startButton = document.querySelector("#start-quiz-button");
+var quizSectionEl = document.querySelector(".quiz-section");
+var intro = document.querySelector(".intro-section");
+var answerChoices = document.querySelector("#list");
+var finalMessage = document.querySelector("#final-message");
 var timeLeft= 60;
+var highscoreList= document.querySelector(".highscore-list");
+
+var highscores= [];
 
 // Question Sets
 var question1 = { 
@@ -53,8 +55,6 @@ var question5 = {
     choice4: "brad",
 }
 
-timerEl.textContent="____________";
-
 
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
@@ -66,7 +66,7 @@ function startQuiz(){
         timerEl.textContent=timeLeft + " seconds left";
         timeLeft--;
 
-        if(timeLeft <=0) {
+        if(timeLeft===0) {
             clearInterval(timeInterval);
             timerEl.textContent = " ";
             displayMessage();
@@ -75,10 +75,11 @@ function startQuiz(){
     firstQuestion();
 }
 
+
 // Wrong answer selected
 function wrongAnswer(){
     correctIncorrect.textContent= "Incorrect!";
-    timeLeft=timeLeft-10;
+    // timeLeft=timeLeft-10;
 }
 // Correct answer selected
 function correctAnswer(){
@@ -88,11 +89,13 @@ function correctAnswer(){
 // Makes the quiz section appear
 startButton.addEventListener("click", startQuiz);
 
+console.log(startQuiz);
+
 // Message after losing; Allows user to play again via confirm message
 function displayMessage() {
     quizSectionEl.style.display = "none";
     if (confirm("Game Over! Would you like to try again?")){
-        startQuiz();
+        location.reload();
     } 
 
 }
@@ -172,6 +175,33 @@ function promptInitials(){
         finalMessage.innerHTML = initials + ", your final score is " + timeLeft;
     }
     timerEl.textContent="____________";
+    renderScores();
+    storeScores();
+}
+
+function renderScores() {
+    
+    for (var i = 0; i < highscores.length; i++) {
+      var highscore = highscores[i];
+  
+      var scoreLiEl = document.createElement("li");
+      scoreLiEl.textContent = highscore;
+      scoreLiEl.setAttribute("data-index", i);
+      highscoreList.appendChild(scoreLiEl);
+    }
+    storeScores();
+    displayHighscores();
+}
+
+function storeScores(){
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+}
+
+function displayHighscores(){
+    var storedHighscores = JSON.parse(localStorage.getItem("highscores"));
+    if(storedHighscores !== null) {
+    highscores = storedHighscores;
+    }
 }
 
 
@@ -185,4 +215,3 @@ function promptInitials(){
 // THEN an alert appears with their score
 // THEN the user can input their initials (prompt)
 // THEN the user can click to see the high scores
-
