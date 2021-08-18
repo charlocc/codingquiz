@@ -78,18 +78,6 @@ li{
     list-style-type: none;
 } 
 
-/* 
-#score{
-
-} 
-*/
-
-/* 
-.highscoreinput{
-
-}
- */
-
 /* Highscore Page */
 
 .highscore-section{
@@ -97,8 +85,9 @@ li{
 }
 
 .highscore-list{
-
-
+    color: rgb(70, 0, 70);
+    width: 90%;
+    padding: 2%;
 } 
 
 

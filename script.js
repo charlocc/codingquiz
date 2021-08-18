@@ -170,13 +170,11 @@ function fifthQuestion(){
 }
 // THEN the user can input their initials (prompt)
 function promptInitials(){
-    var initials = prompt("Please enter your initials", "initials");
-        if (initials != null) {
+    var initials = prompt("Please enter your initials", );
+    if (initials != null) {
         finalMessage.innerHTML = initials + ", your final score is " + timeLeft;
-    }
-    timerEl.textContent="____________";
+    } 
     renderScores();
-    storeScores();
 }
 
 function renderScores() {
