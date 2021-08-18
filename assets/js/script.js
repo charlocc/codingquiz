@@ -17,18 +17,18 @@ var highscores= [];
 
 // Question Sets
 var question1 = { 
-    question:"what is a letter?",
-    choice1: "4",
-    choice2: "7",
-    choice3: "c",
-    choice4: "6",
+    question:"Which of the following is not a basic type?",
+    choice1: "boolean",
+    choice2: "string",
+    choice3: "signature",
+    choice4: "number",
 }
 var question2 = { 
-    question:"what is a dog?",
-    choice1: "animal",
-    choice2: "boat",
-    choice3: "planet",
-    choice4: "state",
+    question:"What is javascript?",
+    choice1: "A programming language",
+    choice2: "What actors use to memorize their lines",
+    choice3: "A type of computer",
+    choice4: "A type of coffee",
 }
 
 var question3 = { 
@@ -79,17 +79,17 @@ function startQuiz(){
 // Wrong answer selected
 function wrongAnswer(){
     correctIncorrect.textContent= "Incorrect!";
-    // timeLeft=timeLeft-10;
+    timeLeft=timeLeft-10;
 }
 // Correct answer selected
 function correctAnswer(){
     correctIncorrect.textContent= "Correct!";
+    timeLeft=timeLeft+1;
 }
 
 // Makes the quiz section appear
 startButton.addEventListener("click", startQuiz);
 
-console.log(startQuiz);
 
 // Message after losing; Allows user to play again via confirm message
 function displayMessage() {
@@ -174,17 +174,15 @@ function promptInitials(){
     if (initials != null) {
         finalMessage.innerHTML = initials + ", your final score is " + timeLeft;
     } 
+    timerEl.style.display = "none";
     renderScores();
 }
-
+// WHEN the user finishes the quiz, then an alert appears with their score
 function renderScores() {
     
     for (var i = 0; i < highscores.length; i++) {
-      var highscore = highscores[i];
-  
       var scoreLiEl = document.createElement("li");
-      scoreLiEl.textContent = highscore;
-      scoreLiEl.setAttribute("data-index", i);
+      scoreLiEl.textContent = highscores[i];
       highscoreList.appendChild(scoreLiEl);
     }
     storeScores();
@@ -209,7 +207,4 @@ function displayHighscores(){
 
 
 
-// WHEN the user finishes the quiz,
-// THEN an alert appears with their score
-// THEN the user can input their initials (prompt)
-// THEN the user can click to see the high scores
+

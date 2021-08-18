@@ -19,7 +19,7 @@ When the game is over, then you can save your initials and see your score.
 ---
 link: https://charlocc.github.io/codingquiz/
 ---
-![alt text](./screenshot.png)
+![alt text](./assets/screenshot.png)
 
 
 
