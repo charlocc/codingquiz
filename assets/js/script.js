@@ -172,37 +172,40 @@ function fifthQuestion(){
 function promptInitials(){
     var initials = prompt("Please enter your initials", );
     if (initials != null) {
-        finalMessage.innerHTML = initials + ", your final score is " + timeLeft;
-    } 
+        finalMessage.innerHTML = initials + ": Score = " + timeLeft;
+        localStorage.setItem("initials", initials);
+        localStorage.setItem("highscores", timeLeft);
+    }
     timerEl.style.display = "none";
-    renderScores();
+    // renderScores();
 }
+var storedInitials = (localStorage.getItem("initials"));
+var storedHighscores = (localStorage.getItem("highscores"));
+console.log(storedHighscores);
+console.log(storedInitials);
 // WHEN the user finishes the quiz, then an alert appears with their score
-function renderScores() {
-    
-    for (var i = 0; i < highscores.length; i++) {
-      var scoreLiEl = document.createElement("li");
-      scoreLiEl.textContent = highscores[i];
-      highscoreList.appendChild(scoreLiEl);
-    }
-    storeScores();
-    displayHighscores();
-}
+// function renderScores() {
 
-function storeScores(){
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-}
+//     for (var i = 0; i < highscores.length; i++) {
+//       var scoreLiEl = document.createElement("li");
+//       scoreLiEl.textContent = highscores[i];
+//       highscoreList.appendChild(scoreLiEl);
+//       scoreLiEl.textContent=localStorage.getItem(initials)
+//     }
+//     storeScores();
+// }
 
-function displayHighscores(){
-    var storedHighscores = JSON.parse(localStorage.getItem("highscores"));
-    if(storedHighscores !== null) {
-    highscores = storedHighscores;
-    }
-}
+// function storeScores(){
+//     localStorage.setItem("highscores", JSON.stringify(highscores));
+// }
 
+// function displayHighscores(){
+//     var storedHighscores = JSON.parse(localStorage.getItem("highscores"));
+//     if(storedHighscores !== null) {
+//     highscores = storedHighscores;
+//     }
+// }
 
-// questionsArray = [question1, question2, question3]
-// var questionBank = questionsArray[Math.floor(Math.random() * questionsArray.length)];
 
 
 
