@@ -56,6 +56,8 @@ var question5 = {
 }
 
 
+
+
 // WHEN the user clicks "start quiz", 
 function startQuiz(){
 // THEN the first question with answer choices appears 
@@ -168,43 +170,19 @@ function fifthQuestion(){
     choice4.addEventListener("click", wrongAnswer);
     answerChoices.addEventListener("click", promptInitials); 
 }
+
 // THEN the user can input their initials (prompt)
 function promptInitials(){
     var initials = prompt("Please enter your initials", );
     if (initials != null) {
-        finalMessage.innerHTML = initials + ": Score = " + timeLeft;
+        finalMessage.innerHTML = initials + ": Score = " + timeLeft + "!";
         localStorage.setItem("initials", initials);
         localStorage.setItem("highscores", timeLeft);
     }
     timerEl.style.display = "none";
-    // renderScores();
+    clearTimeout(timerEl);
 }
-var storedInitials = (localStorage.getItem("initials"));
-var storedHighscores = (localStorage.getItem("highscores"));
-console.log(storedHighscores);
-console.log(storedInitials);
-// WHEN the user finishes the quiz, then an alert appears with their score
-// function renderScores() {
-
-//     for (var i = 0; i < highscores.length; i++) {
-//       var scoreLiEl = document.createElement("li");
-//       scoreLiEl.textContent = highscores[i];
-//       highscoreList.appendChild(scoreLiEl);
-//       scoreLiEl.textContent=localStorage.getItem(initials)
-//     }
-//     storeScores();
-// }
-
-// function storeScores(){
-//     localStorage.setItem("highscores", JSON.stringify(highscores));
-// }
-
-// function displayHighscores(){
-//     var storedHighscores = JSON.parse(localStorage.getItem("highscores"));
-//     if(storedHighscores !== null) {
-//     highscores = storedHighscores;
-//     }
-// }
+// Then an alert appears with their score
 
 
 

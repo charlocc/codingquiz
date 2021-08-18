@@ -25,7 +25,7 @@ li{
     border:rgb(70, 0, 70) solid 2px;
 }
 body{
-    background-image: linear-gradient(to right, rgb(141, 180, 238), rgb(170, 170, 219));
+    background-image: linear-gradient(to right, rgb(141, 180, 238), rgb(137, 137, 223));
 }
 
 /* Header */
@@ -73,22 +73,21 @@ body{
     margin: 2% 6%;
 } 
 
-
 #answer-choices{
     list-style-type: none;
 } 
 
 /* Highscore Page */
 
-.highscore-section{
-    list-style-type: none;
-}
 
 .highscore-list{
     color: rgb(70, 0, 70);
-    width: 90%;
+    width: 100%;
     padding: 2%;
+    list-style-type: none;
+    text-align: center;
 } 
+
 
 
 
