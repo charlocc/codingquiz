@@ -1,4 +1,5 @@
 var timerEl = document.querySelector(".time");
+var scoreEl = document.querySelector(".score");
 var question = document.querySelector("#question");
 var choice1 = document.querySelector("#choice1");
 var choice2 = document.querySelector("#choice2");
@@ -14,7 +15,7 @@ var timeLeft= 60;
 var highscoreList= document.querySelector(".highscore-list");
 
 var highscores= [];
-
+var score=0
 // Question Sets
 var questionSets= [{ 
     question:"Which of the following is not a basic type?",
@@ -100,7 +101,7 @@ var i = 0
 // Lists the question and answer choices
 function setUpQuestion (){
     if(i>4){
-        return promptInitials();
+        return alertScore();
     }
     question.textContent=questionSets[i].question;
     choice1.textContent=questionSets[i].choice1;
@@ -112,9 +113,9 @@ function setUpQuestion (){
 choice1.addEventListener("click", function(){
     if(questionSets[i].choice1 === questionSets[i].answer){
         correctIncorrect.textContent= "Correct!";
+        score++;
     } else {
         correctIncorrect.textContent= "Incorrect!";
-        timeLeft=timeLeft-10;
     }
     i++;
     setUpQuestion();
@@ -123,9 +124,9 @@ choice1.addEventListener("click", function(){
 choice2.addEventListener("click", function(){
     if(questionSets[i].choice2 === questionSets[i].answer){
         correctIncorrect.textContent= "Correct!";
+        score++
     } else {
         correctIncorrect.textContent= "Incorrect!";
-        timeLeft=timeLeft-10;
     }
     i++;
     setUpQuestion();
@@ -134,9 +135,9 @@ choice2.addEventListener("click", function(){
 choice3.addEventListener("click", function(){
     if(questionSets[i].choice3 === questionSets[i].answer){
         correctIncorrect.textContent= "Correct!";
+        score++;
     } else {
         correctIncorrect.textContent= "Incorrect!";
-        timeLeft=timeLeft-10;
     }
     i++;
     setUpQuestion();
@@ -145,9 +146,9 @@ choice3.addEventListener("click", function(){
 choice4.addEventListener("click", function(){
     if(questionSets[i].choice4 === questionSets[i].answer){
         correctIncorrect.textContent= "Correct!";
+        score++;
     } else {
         correctIncorrect.textContent= "Incorrect!";
-        timeLeft=timeLeft-10;
     }
     i++;
     setUpQuestion();
@@ -156,17 +157,23 @@ choice4.addEventListener("click", function(){
 
 
 // THEN the user can input their initials (prompt)
-function promptInitials(){
-    var initials = prompt("Please enter your initials", );
-    if (initials != null) {
-        finalMessage.innerHTML = initials + ": Score = " + timeLeft + "!";
-        localStorage.setItem("initials", initials);
-        localStorage.setItem("highscores", timeLeft);
-    }
+// function promptInitials(){
+//     var initials = prompt("Please enter your initials", );
+//     if (initials != null) {
+//         finalMessage.innerHTML = initials + ": Score = " + score + "!";
+//         localStorage.setItem("initials", initials);
+//         localStorage.setItem("highscores", timeLeft);
+//     }
+//     timerEl.style.display = "none";
+//     clearTimeout(timerEl);
+// }
+// Then an alert appears with their score
+
+function alertScore(){
+    alert("Your score is " + score );
     timerEl.style.display = "none";
     clearTimeout(timerEl);
 }
-// Then an alert appears with their score
 
 
 
